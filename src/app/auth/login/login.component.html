@@ -1,1 +1,61 @@
-<p>login works!</p>
+<div class="container-fluid">
+	<div class="row vh-100 g-0">
+
+		<div class="col-lg-7 d-none d-lg-block">
+			<div class="login-panel">
+				<div class="brand-container text-white text-center">
+					<i class="bi bi-heart-pulse-fill brand-icon"></i>
+					<h1 class="display-4">Easy Nutrition</h1>
+					<p class="lead">Sua jornada para uma vida mais saudável começa aqui.</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-5 d-flex flex-column justify-content-center align-items-center bg-light">
+			<div class="form-wrapper p-4 p-md-5">
+
+				<div class="text-center mb-4">
+					<h2 class="fw-bold">Bem-vindo(a) de volta!</h2>
+					<p class="text-muted">Faça login para continuar.</p>
+				</div>
+
+				<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+					<div class="input-group mb-3">
+						<span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+						<div class="form-floating flex-grow-1">
+							<input type="email" class="form-control" id="email" placeholder="seuemail@exemplo.com"
+								formControlName="email">
+							<label for="email">Email</label>
+						</div>
+					</div>
+
+					<div class="input-group mb-4">
+						<span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+						<div class="form-floating flex-grow-1">
+							<input type="password" class="form-control" id="password" placeholder="Sua senha"
+								formControlName="password">
+							<label for="password">Senha</label>
+						</div>
+					</div>
+
+					<div class="d-grid">
+						<button type="submit" class="btn btn-success btn-lg" [disabled]="loginForm.invalid">
+							Entrar
+						</button>
+					</div>
+
+					<div class="text-center mt-4">
+						<a href="#" class="text-decoration-none">Esqueceu sua senha?</a>
+						<p class="mt-2 text-muted">
+							Não tem uma conta? <a routerLink="/registrar"
+								class="fw-bold text-decoration-none">Registre-se</a>
+						</p>
+					</div>
+				</form>
+
+			</div>
+		</div>
+
+	</div>
+</div>
