@@ -1,0 +1,68 @@
+/* src/app/auth/login/login.component.css */
+
+/* Painel da Esquerda com a Imagem */
+.login-panel {
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max') no-repeat center center;
+    background-size: cover;
+    position: relative; /* Necessário para o overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Overlay escuro para dar contraste ao texto */
+.login-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 128, 62, 0.6); /* Verde escuro com transparência */
+    z-index: 1;
+}
+
+/* Conteúdo de Branding */
+.brand-container {
+    position: relative; /* Para ficar acima do overlay */
+    z-index: 2;
+    padding: 20px;
+}
+
+.brand-icon {
+    font-size: 4rem; /* Tamanho do ícone */
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+/* Contêiner do Formulário */
+.form-wrapper {
+    width: 100%;
+    max-width: 450px; /* Limita a largura do formulário */
+}
+
+/* Ajustes finos nos inputs e botões */
+.input-group-text {
+    background-color: #e9ecef;
+    border-right: none;
+}
+
+.form-control {
+    border-left: none;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #198754; /* Verde do Bootstrap (success) */
+}
+
+.btn-success {
+    padding: 0.75rem 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.container-fluid {
+    padding: 0;
+}
