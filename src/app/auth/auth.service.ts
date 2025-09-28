@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaderResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaderResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
 
@@ -12,6 +12,14 @@ export interface LoginResponse {
   token: string
 }
 
+export interface RegisterRequest {
+  fullName: string;
+  email: string;
+  cpf: string;
+  phone: string;
+  password: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -21,15 +29,22 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  login(credentials: LoginRequest): Observable<LoginResponse> {
+  login(credentials: LoginRequest): Observable<HttpResponse<LoginResponse>> {
     return this.http.post<LoginResponse>(`${this.apiUrl}/login`, credentials, {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      observe: 'response'
     })
       .pipe(
-        tap(response => {
-          this.saveToken(response.token);
+        tap((response: HttpResponse<LoginResponse>) => {
+          if(response.body?.token) {
+            this.saveToken(response.body.token);
+          }
         })
       )
+  }
+
+  register(userData: RegisterRequest): Observable<HttpResponse<any>> {
+    return this.http.post<any>(`${this.apiUrl}/register`, userData, { observe: 'response' });
   }
 
   private saveToken(token: string): void {
