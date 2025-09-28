@@ -21,21 +21,33 @@
 
 				<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
-					<div class="input-group mb-3">
-						<span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
-						<div class="form-floating flex-grow-1">
-							<input type="email" class="form-control" id="email" placeholder="seuemail@exemplo.com"
-								formControlName="email">
-							<label for="email">Email</label>
+					<div class="mb-3">
+						<div class="input-group">
+							<span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+							<div class="form-floating flex-grow-1">
+								<input type="email" class="form-control" id="email" placeholder="seuemail@exemplo.com"
+									formControlName="email">
+								<label for="email">Email</label>
+							</div>
+						</div>
+						<div *ngIf="form.email.touched && form.email.invalid" class="text-danger small mt-1">
+							<div *ngIf="form.email.errors?.['required']">Email é obrigatório.</div>
+							<div *ngIf="form.email.errors?.['email']">Formato de email inválido.</div>
 						</div>
 					</div>
 
-					<div class="input-group mb-4">
-						<span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
-						<div class="form-floating flex-grow-1">
-							<input type="password" class="form-control" id="password" placeholder="Sua senha"
-								formControlName="password">
-							<label for="password">Senha</label>
+					<div class="mb-3">
+						<div class="input-group">
+							<span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+							<div class="form-floating flex-grow-1">
+								<input type="password" class="form-control" id="password" placeholder="Sua senha"
+									formControlName="password">
+								<label for="password">Senha</label>
+							</div>
+						</div>
+						<div *ngIf="form.password.touched && form.password.invalid" class="text-danger small mt-1">
+							<div *ngIf="form.password.errors?.['required']">Senha é obrigatório.</div>
+							<div *ngIf="form.password.errors?.['minlength']">A Senha deve ter no mínimo 5 caracteres.</div>
 						</div>
 					</div>
 
@@ -48,7 +60,7 @@
 					<div class="text-center mt-4">
 						<a href="#" class="text-decoration-none">Esqueceu sua senha?</a>
 						<p class="mt-2 text-muted">
-							Não tem uma conta? <a routerLink="/registrar"
+							Não tem uma conta? <a routerLink="/register"
 								class="fw-bold text-decoration-none">Registre-se</a>
 						</p>
 					</div>
