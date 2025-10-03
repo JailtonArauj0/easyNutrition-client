@@ -1,0 +1,57 @@
+<div class="d-flex flex-column p-3 text-white bg-dark h-100">
+  <a href="/app/home" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+    <i class="bi bi-heart-pulse-fill me-2 fs-4"></i>
+    <span class="fs-4">Easy Nutrition</span>
+  </a>
+  <hr>
+
+  <ul class="nav nav-pills flex-column mb-auto">
+    <li class="nav-item">
+      <a routerLink="/app/home" routerLinkActive="active" class="nav-link text-white">
+        <i class="bi bi-house-door me-2"></i>
+        Início
+      </a>
+    </li>
+
+    <div class="accordion accordion-flush" id="accordionSidebar">
+      <div class="accordion-item bg-dark">
+        <h2 class="accordion-header" id="headingPacientes">
+          <button class="accordion-button collapsed bg-dark text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePacientes">
+            <i class="bi bi-people me-2"></i> Pacientes
+          </button>
+        </h2>
+        <div id="collapsePacientes" class="accordion-collapse collapse" data-bs-parent="#accordionSidebar">
+          <div class="accordion-body bg-dark">
+            <ul class="list-unstyled ps-4">
+              <li><a href="#" class="d-block text-white text-decoration-none rounded py-1">Listar Pacientes</a></li>
+              <li><a href="#" class="d-block text-white text-decoration-none rounded py-1">Novo Paciente</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="accordion-item bg-dark">
+        <h2 class="accordion-header" id="headingAvaliacoes">
+          <button class="accordion-button collapsed bg-dark text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAvaliacoes">
+            <i class="bi bi-clipboard2-pulse me-2"></i> Avaliações
+          </button>
+        </h2>
+        <div id="collapseAvaliacoes" class="accordion-collapse collapse" data-bs-parent="#accordionSidebar">
+           <div class="accordion-body bg-dark">
+            <ul class="list-unstyled ps-4">
+              <li><a href="#" class="d-block text-white text-decoration-none rounded py-1">Nova Avaliação</a></li>
+              <li><a href="#" class="d-block text-white text-decoration-none rounded py-1">Histórico</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <li>
+      <a href="#" class="nav-link text-white">
+        <i class="bi bi-calendar-event me-2"></i>
+        Agenda
+      </a>
+    </li>
+  </ul>
+</div>
