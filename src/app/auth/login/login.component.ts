@@ -41,9 +41,7 @@ export class LoginComponent {
       this.authService.login(this.loginForm.getRawValue()).subscribe({
         next: (response: HttpResponse<LoginResponse>) => {
           if(response.status === 200) {
-            //this.router.navigate(['/main']);
-            //TODO
-            this.alertService.showSuccess('Logado com sucesso.')
+            this.router.navigate(['/app/home']);
           }
         },
         error: (err: HttpErrorResponse) => {
