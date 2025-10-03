@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { HttpClient, HttpHeaderResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
+import { isPlatformBrowser } from '@angular/common';
 
 export interface LoginRequest {
   email: string,
@@ -26,8 +27,15 @@ export interface RegisterRequest {
 export class AuthService {
   private apiUrl = 'http://localhost:8080/auth';
   private readonly TOKEN_KEY = 'authToken';
+  private isBrowser: boolean;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) { 
+    this.isBrowser = isPlatformBrowser(this.platformId)
+  }
 
   login(credentials: LoginRequest): Observable<HttpResponse<LoginResponse>> {
     return this.http.post<LoginResponse>(`${this.apiUrl}/login`, credentials, {
@@ -48,11 +56,16 @@ export class AuthService {
   }
 
   private saveToken(token: string): void {
-    localStorage.setItem(this.TOKEN_KEY, token);
+    if(this.isBrowser) {
+      localStorage.setItem(this.TOKEN_KEY, token);
+    }
   }
 
   getToken(): string | null {
-    return localStorage.getItem(this.TOKEN_KEY);
+    if(this.isBrowser) {
+      return localStorage.getItem(this.TOKEN_KEY);
+    }
+    return null;
   }
 
   isLoggedIn(): boolean {
@@ -60,8 +73,10 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem(this.TOKEN_KEY);
-    this.router.navigate(['/login']);
+    if(this.isBrowser) {
+      localStorage.removeItem(this.TOKEN_KEY);
+      this.router.navigate(['/login']);
+    }
   }
 
 }
