@@ -1,0 +1,42 @@
+:host {
+  display: block;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.main-container {
+  height: 100vh;
+}
+
+.sidebar {
+  width: 280px;
+  min-width: 280px;
+  transition: all 0.3s;
+}
+
+.content-wrapper {
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.main-content {
+  background-color: #f8f9fa;
+}
+
+
+.sidebar .accordion-button {
+  padding: 1rem;
+}
+
+.sidebar .accordion-button:not(.collapsed) {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.sidebar .accordion-button:focus {
+  box-shadow: none;
+}
+
+.sidebar .accordion-body {
+  padding: 0;
+}
